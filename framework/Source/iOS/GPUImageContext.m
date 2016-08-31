@@ -98,11 +98,8 @@ static void *openGLESContextQueueKey;
         [EAGLContext setCurrentContext:imageProcessingContext];
     }
     
-    if (self.currentShaderProgram != shaderProgram)
-    {
-        self.currentShaderProgram = shaderProgram;
-        [shaderProgram use];
-    }
+    self.currentShaderProgram = shaderProgram;
+    [shaderProgram use];
 }
 
 + (GLint)maximumTextureSizeForThisDevice;

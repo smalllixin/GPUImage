@@ -231,7 +231,9 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size);
         }
         else
         {
-            glDeleteTextures(1, &_texture);
+            if (!_preventReleaseTexture) {
+                glDeleteTextures(1, &_texture);
+            }
         }
 
     });
@@ -452,6 +454,10 @@ void dataProviderUnlockCallback (void *info, const void *data, size_t size)
 {
 //    NSLog(@"Accessing texture: %d from FB: %@", _texture, self);
     return _texture;
+}
+
+- (void)overrideTexture:(GLuint)texture {
+    _texture = texture;
 }
 
 @end
